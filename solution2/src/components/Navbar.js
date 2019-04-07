@@ -6,7 +6,6 @@ class MyNavbar extends Component {
 
     return (
       <div className="navbar">
-        <button className="input">Reset</button>
         <select
           className="input"
           onChange={e => this.props.selectTable(e.target.value)}
@@ -37,7 +36,6 @@ class MyNavbar extends Component {
             ))}
           </select>
         )}
-        <button className="input">Search</button>
       </div>
     );
   }
