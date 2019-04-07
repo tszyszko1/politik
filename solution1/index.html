@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solution 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a id="reset_button" class="navbar-brand" href="#">Reset</a>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input
+                id="filter_input"
+                type="text"
+                class="form-control"
+                placeholder="Search"
+              />
+              <select id="filter_select" class="form-control">
+                <option selected>Id</option>
+                <option>Name</option></select
+              >
+            </div>
+
+            <button id="filter_submit" type="submit" class="btn btn-default">
+              Filter
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <table id="table_councillors" class="table table-bordered">
+        <tr>
+          <th data-sort="id">Id</th>
+          <th data-sort="updated">updated</th>
+          <th data-sort="active">active</th>
+          <th data-sort="code">code</th>
+          <th data-sort="firstName">First Name</th>
+          <th data-sort="lastName">Last Name</th>
+          <!-- <th>salutationLetter</th> -->
+          <!-- <th>salutationTitle</th>
+          <th>officialDenomination</th> -->
+        </tr>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
