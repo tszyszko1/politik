@@ -1,13 +1,21 @@
 import React, { Component } from "react";
-
+import constants from "../constants";
 class MyNavbar extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
+    const filters = constants[this.props.selectedTable].filters;
+
     return (
       <div className="navbar">
         <button className="input">Reset</button>
+        <select
+          className="input"
+          onChange={e => this.props.selectTable(e.target.value)}
+          value={this.props.selectedTable}
+        >
+          {Object.keys(constants).map(type => {
+            return <option key={type}>{type}</option>;
+          })}
+        </select>
         <input
           type="text"
           className="input"
@@ -15,16 +23,20 @@ class MyNavbar extends Component {
             this.props.setFilter(this.props.filter.attribute, e.target.value)
           }
         />
-        <select
-          className="input"
-          onChange={e =>
-            this.props.setFilter(e.target.value, this.props.filter.term)
-          }
-        >
-          <option />
-          <option>id</option>
-          <option>name</option>
-        </select>
+        {filters.length > 1 && (
+          <select
+            className="input"
+            onChange={e =>
+              console.log(e.target.value) ||
+              this.props.setFilter(e.target.value, this.props.filter.term)
+            }
+            value={this.props.filter.attribute}
+          >
+            {filters.map(f => (
+              <option key={f}>{f}</option>
+            ))}
+          </select>
+        )}
         <button className="input">Search</button>
       </div>
     );

@@ -1,40 +1,40 @@
 import React, { Component } from "react";
-import { columns } from "../constants";
+import constants from "../constants";
 class Table extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <table id="table_councillors">
-        <tr>
-          {columns.map(col => {
+        <tbody>
+          <tr>
+            {constants.councillors.columns.map(col => {
+              return (
+                <th
+                  key={col}
+                  onClick={() =>
+                    this.props.setSort(
+                      col,
+                      this.props.sort.direction === "asc" ? "desc" : "asc"
+                    )
+                  }
+                >
+                  {col}
+                </th>
+              );
+            })}
+          </tr>
+          {this.props.data.map(item => {
             return (
-              <th
-                onClick={() =>
-                  this.props.setSort(
-                    col,
-                    this.props.sort.direction === "asc" ? "desc" : "asc"
-                  )
-                }
-              >
-                {col}
-              </th>
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{new Date(item.updated).toLocaleDateString()}</td>
+                <td>{item.active}</td>
+                <td>{item.code}</td>
+                <td>{item.firstName}</td>
+                <td>{item.lastName}</td>
+              </tr>
             );
           })}
-        </tr>
-        {this.props.data.map(item => {
-          return (
-            <tr>
-              <td>{item.id}</td>
-              <td>{new Date(item.updated).toLocaleDateString()}</td>
-              <td>{item.active}</td>
-              <td>{item.code}</td>
-              <td>{item.firstName}</td>
-              <td>{item.lastName}</td>
-            </tr>
-          );
-        })}
+        </tbody>
       </table>
     );
   }
