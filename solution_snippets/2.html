@@ -1,0 +1,31 @@
+<html>
+  <head> </head>
+  <body>
+    <script type="text/javascript">
+      const onMouseMove = () => {
+        let buffering = false;
+        let timeout;
+        return () => {
+          if (buffering) {
+            if (timeout) {
+              clearTimeout(timeout);
+              timeout = setTimeout(() => {
+                buffering = false;
+              }, 500);
+            }
+            return null;
+          }
+
+          buffering = true;
+          for (let i = 0; i < 9999; i++) {
+            console.log(i);
+          }
+          timeout = setTimeout(() => {
+            buffering = false;
+          }, 500);
+        };
+      };
+      document.addEventListener("mousemove", onMouseMove());
+    </script>
+  </body>
+</html>
